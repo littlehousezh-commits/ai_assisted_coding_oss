@@ -5,11 +5,11 @@ This repository contains supplementary code and survey materials for our study o
 
 The supplementary materials include:
 
-- `supplementary_data_collection.py`: organized data-collection pipeline
-- `vibe-coding-scraper`: original data-collection pipeline for chat adopted from previous paper
-- `supplementary_data_analysis.py`: data-analysis pipeline
-- `supplementary_data_analysis.ipynb`: data-analysis pipeline in ipynb version
-- survey file: developer survey responses
+- `supplementary_data_collection.py`: organized data-collection pipeline and early preprocessing.
+- `vibe-coding-scraper`: original data-collection pipeline for chat adopted from a previous paper.
+- `supplementary_data_analysis.py`: Main preprocessing and data analysis.
+- `supplementary_data_analysis.ipynb`: data-analysis pipeline in ipynb version.
+- survey file: developer survey responses.
 
 ## Overview
 
