@@ -11,9 +11,6 @@ Canonical cohorts used in the paper:
   - RQ2 main comparison sample: 608 repositories whose first observed AI chat
     occurred at or after GitHub publication.
   - RQ2 validation sample: 114 older repositories created before 2025.
-
-The script assumes the cleaned data tables and final cohort CSVs are available
-under a project root. Set VIBE_CODING_ROOT to override the current directory.
 """
 
 from __future__ import annotations
