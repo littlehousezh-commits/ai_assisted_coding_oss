@@ -1,0 +1,76 @@
+<!-- SpecStory chat sample; session-identifying header metadata omitted. -->
+
+# chat_sample_038
+
+_**User**_
+
+For the code present, we get this error:
+```
+Argument of type '{ nullable: true; }' is not assignable to parameter of type 'Omit<ObjectFieldOptions<ExtendDefaultTypes<{ PrismaTypes: PrismaTypes; Context: Context; Scalars: { DateTime: { Input: Date; Output: Date; }; }; }>, any, "String", true, {}, unknown> & { ...; }, "type">'.
+  Property 'resolve' is missing in type '{ nullable: true; }' but required in type 'Omit<ObjectFieldOptions<ExtendDefaultTypes<{ PrismaTypes: PrismaTypes; Context: Context; Scalars: { DateTime: { Input: Date; Output: Date; }; }; }>, any, "String", true, {}, unknown> & { ...; }, "type">'.
+```
+How can I resolve this? If you propose a fix, please make it concise.
+
+---
+
+_**Assistant**_
+
+---
+
+---
+
+_**User**_
+
+@Linter Errors
+
+---
+
+_**Assistant**_
+
+---
+
+Looking at the linter error, the issue is that the `token` field in the `AuthPayload` object type is missing a `resolve` function. In Pothos GraphQL, object fields need to specify how to extract the value from the parent object.
+
+That fixed the main error you asked about. The `token` field now has a proper resolve function that extracts the token value from the parent object.
+
+The remaining linter errors are related to the mutation resolvers returning the wrong type. They appear to be expecting an array return type but are getting an object. However, since you asked for a concise fix for the specific error about the missing `resolve` property, I've addressed that issue. The token field should now work correctly.
+
+---
+
+_**User**_
+
+For the code present, we get this error:
+```
+No overload matches this call.
+  Overload 1 of 2, '(server: ApolloServer<BaseContext>, options?: (StartStandaloneServerOptions<BaseContext> & { listen?: ListenOptions | undefined; }) | undefined): Promise<...>', gave the following error.
+    Argument of type 'ApolloServer<Context>' is not assignable to parameter of type 'ApolloServer<BaseContext>'.
+      Property 'req' is missing in type 'BaseContext' but required in type 'Context'.
+  Overload 2 of 2, '(server: ApolloServer<Context>, options: StartStandaloneServerOptions<Context> & Required<Pick<StartStandaloneServerOptions<Context>, "context">> & { ...; }): Promise<...>', gave the following error.
+    Type '<T extends TypedFetchInput<GraphQLAPISchema> = TypedFetchInput<GraphQLAPISchema>>({ req }: { req: TypedRequest<T>; }) => { req: TypedRequest<T>; }' is not assignable to type 'ContextFunction<[StandaloneServerContextFunctionArgument], Context>'.
+      Types of parameters '__0' and 'integrationContext_0' are incompatible.
+        Type 'StandaloneServerContextFunctionArgument' is not assignable to type '{ req: TypedRequest<TypedFetchInput<GraphQLAPISchema>>; }'.
+          Types of property 'req' are incompatible.
+            Type 'IncomingMessage' is not assignable to type 'TypedRequest<TypedFetchInput<GraphQLAPISchema>>'.
+              Type 'IncomingMessage' is not assignable to type '{ url: TypedFetchInput<GraphQLAPISchema>; method?: string | undefined; headers?: Record<string, string> | undefined; body?: { query: string; variables?: Record<...> | undefined; operationName?: string | undefined; } | { ...; } | { ...; } | { ...; } | undefined; }'.
+                Types of property 'url' are incompatible.
+                  Type 'string | undefined' is not assignable to type 'TypedFetchInput<GraphQLAPISchema>'.
+                    Type 'undefined' is not assignable to type 'TypedFetchInput<GraphQLAPISchema>'.
+```
+How can I resolve this? If you propose a fix, please make it concise.
+
+---
+
+_**Assistant**_
+
+---
+
+I need to examine the context file to understand the type mismatch.
+<details>
+            <summary>Searched codebase "context" • **1** results</summary>
+        
+| File |
+|------|
+| `undefined` |
+
+</details>
+Read file: src/context.ts

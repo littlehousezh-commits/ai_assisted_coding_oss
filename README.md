@@ -1,15 +1,16 @@
 
-# Supplementary Materials for the Vibe-Coding OSS Study
+# Supplementary Materials for From Conversation to Contribution
 
-This repository contains supplementary code and survey materials for our study of how AI coding assistants are used in open-source software (OSS) repositories and how repository activity changes after observable AI adoption. Data collection and labeling largely follow prior studies, so the corresponding scripts are relatively simple. We organize the data-analysis scripts in one Python file to support clearer and easier interpretation.
+This repository contains supplementary code and survey materials for our study of how AI coding assistants are used in open-source software repositories and how repository activity changes after the first observable AI adoption. We organize the data-analysis scripts in one Python file to support clearer and easier interpretation.
 
 The supplementary materials include:
 
 - `supplementary_data_collection.py`: organized data-collection pipeline and early preprocessing.
-- `vibe-coding-scraper`: original data-collection pipeline for chat adopted from a previous paper.
+- `vibe-coding-scraper`: data-collection pipeline for chat.
 - `supplementary_data_analysis.py`: Main preprocessing and data analysis.
 - `supplementary_data_analysis.ipynb`: data-analysis pipeline in ipynb version.
-- survey file: developer survey responses.
+- `survey.pdf`: developer survey questionnaire.
+- `data/`: multi-turn chat histories samples.
 
 ## Overview
 
@@ -18,8 +19,8 @@ The study analyzes public OSS repositories containing observable AI-chat history
 The final filtered analysis cohorts used in the paper are:
 
 - **RQ1 full filtered sample:** 1,240 repositories
-- **RQ2 main comparison sample:** 608 repositories whose first observed AI chat occurred at or after GitHub repository publication
-- **RQ2 validation sample:** 114 older repositories created before 2025
+- **RQ2 main comparison sample:** 608 repositories whose first observed AI chat occurred strictly after GitHub repository publication
+- **RQ2 validation sample:** 114 more mature repositories
 
 ## Data Collection
 
@@ -49,23 +50,8 @@ The script performs the following steps:
    - CI/check runs
 6. Classifies changed files into source code, tests, documentation, dependencies, configuration/build files, AI-chat artifacts, generated/binary files, or other files.
 
-### GitHub Credentials
-
-The script does not contain API keys. Set a GitHub token in the environment before running:
-
-```bash
-export GITHUB_TOKEN=your_token_here
-```
-
-or, for multiple tokens:
-
-```bash
-export GITHUB_TOKENS="token1 token2 token3"
-```
 
 ## Data Analysis
-
-The data-analysis script reproduces the main analysis structure used in the paper:
 
 ```bash
 python supplementary_data_analysis.py --root /path/to/project/root
@@ -107,8 +93,6 @@ The analysis covers:
 
 ## Survey Analysis
 
-The analysis script also summarizes survey responses when a survey CSV is available:
-
 ```bash
 python supplementary_data_analysis.py \
   --root /path/to/project/root \
@@ -124,18 +108,8 @@ Survey analyses include:
 - concerns about AI-generated code
 - disclosure willingness and appropriate/risky use cases
 
-## Requirements
 
-Python 3.10+ is recommended.
+## Chat Data
 
-Core Python packages:
+Due to the large volume of the full chat dataset, we provide subset chat histories in `data/` for reference. We will be happy to release the full chat dataset upon acceptance of the paper. For a manageable preview, we selected one standard-format session per repository from source logs between 1 KB and 50 KB. The parsed user and assistant message text is preserved without truncation; session-identifying headers, titles, and timestamps are omitted.
 
-```bash
-pip install pandas numpy scipy statsmodels
-```
-
-For data collection through GitHub:
-
-```bash
-pip install tqdm
-```

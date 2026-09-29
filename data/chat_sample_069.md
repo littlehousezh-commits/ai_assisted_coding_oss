@@ -1,0 +1,37 @@
+<!-- SpecStory chat sample; session-identifying header metadata omitted. -->
+
+# chat_sample_069
+
+_**User**_
+
+Go through numbers in invoice items and format them properly. Separate thousands for example
+
+---
+
+_**Assistant**_
+
+I'll help you format numbers in invoice items with proper thousand separators. Let me first find the invoice-related files to see where numbers are displayed. Now let me check if there's already a number formatting helper or if we need to create one: Perfect! Now I need to enhance the `format_currency/1` function to include thousand separators. I'll also add a helper function to format regular numbers (for quantities and VAT rates) with thousand separators. Let me update the currency helper: 
+```
+
+```
+Now let's update the invoice component to format the quantity and VAT rate numbers with thousand separators: 
+```
+
+```
+Now let's also format the "Number of Nights" in the summary section: 
+```
+
+```
+Now let's run the tests to make sure everything still works correctly:
+
+---
+
+_**User**_
+
+also make sure that numbers in invoice items do not wrap. you may even make that form wider. I mean whole booking form.
+
+---
+
+_**Assistant**_
+
+I'll make the booking form wider and ensure numbers in invoice items don't wrap. Let me first check the current layout of the booking form and invoice items.
